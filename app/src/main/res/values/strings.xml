@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FruitQuiz</string>
+    <string name="textPlay">Play</string>
+    <string name="sountToggleText">Sound</string>
+    <string name="results">Results</string>
+    <string name="playAgain">Play Again</string>
+    <string name="done">Done</string>
+    <string name="soundSetting">sound</string>
+
+</resources>

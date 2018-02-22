@@ -38,13 +38,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        // only 1 item, skip the unnecessary menuitem for now
-        startActivity( new Intent(this, SettingsActivity.class) );
-        return super.onMenuOpened(featureId, menu);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
         menu.add( "Settings" ); // sadded to activate the settings menu
         return super.onCreateOptionsMenu( menu );
@@ -53,7 +46,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected( MenuItem item ) {
         // Log.i( "skippy", "item selected");
-        //startActivity( new Intent(this, SettingsActivity.class) );
+        startActivity( new Intent(this, SettingsActivity.class) );
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        // only 1 item, skip the unnecessary menuitem for now
+        //startActivity( new Intent(this, SettingsActivity.class) );
+        return super.onMenuOpened(featureId, menu);
     }
 }

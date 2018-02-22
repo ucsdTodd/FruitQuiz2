@@ -101,6 +101,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         loadNextQuestion();
     }
 
+    private void playMedia( MediaPlayer media ){
+        if( getSharedPreferences( "fruitquiz", MODE_PRIVATE ).getBoolean( "sound", true) ){
+            media.start();
+        }
+    }
+
     @Override
     public void onClick(View v) {
         Button guessButton = ((Button) v);
@@ -109,7 +115,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if( guess.equals( questions.get( questionIndex ) ) ){
             // correct
             answerTextView.setText( guess + " is correct!");
-            clappingSound.start();
+            playMedia( clappingSound );
             guessButton.startAnimation( shakeAnimation );
             if( questionIndex == questions.size() - 1 ){
                 // handle quiz completion
@@ -133,7 +139,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             // NOT correct
             Toast.makeText( getApplicationContext(), "WRONG!", Toast.LENGTH_SHORT ).show();
             answerTextView.setText( "Try again" );
-            boingSound.start();
+            playMedia( boingSound );
             guessButton.setEnabled( false );
         }
     }
